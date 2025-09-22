@@ -3,12 +3,29 @@ package conta_bancaria;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import conta_bancaria.model.Conta;
+
 public class Menu {
 
 	public static void main(String[] args) {
 		Scanner leia = new Scanner(System.in);
 		
 		int op=0;
+		
+		// Instanciar objetos da classe conta
+		
+		Conta c1 = new Conta(1,123,1,"Rafaela Lemes", 500000.00f);
+		
+		Conta c2 = new Conta(2,123,2,"Lemes Rafaela", 500000.00f);
+		
+		System.out.println("O saldo da conta é: " + c1.getSaldo());
+		
+		c1.setSaldo(600000.00f); 
+		
+		c1.visualizar();
+		
+		c2.visualizar();
+		
 		
 		//while(true) { // verificar onde tenho que fechar essa chave
 		//System.out.println("****************************************************************************");

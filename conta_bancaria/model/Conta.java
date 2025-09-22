@@ -55,6 +55,20 @@ public class Conta {
 		this.saldo = saldo;
 	}
 	
+	public boolean sacar(float valor) {
+		if (this.saldo < valor) {
+			System.out.println("\nSaldo insuficiente! ");
+			return false;
+		}
+		this.saldo = this.saldo - valor;
+		return true;
+	}
+	
+	public void depositar(float valor) {
+		this.saldo = this.saldo + valor;
+		
+	}
+	
 	public void visualizar() {
 		
 		String tipo="";

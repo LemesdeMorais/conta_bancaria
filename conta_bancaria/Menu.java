@@ -18,17 +18,21 @@ public class Menu {
 		
 		Conta c2 = new Conta(2,123,2,"Lemes Rafaela", 500000.00f);
 		
-		System.out.println("O saldo da conta é: " + c1.getSaldo());
+		System.out.println("O saldo da conta é: " + c1.getSaldo()); // aqui o get vai retornar o saldo
 		
-		c1.setSaldo(600000.00f); 
+		c1.setSaldo(600000.00f); // aqui é o set, ele somente altera o valor
 		
 		c1.visualizar();
 		
 		c2.visualizar();
 		
+		System.out.println(c1.sacar(1000));
+		//System.out.println("O saldo da conta é: " + c1.getSaldo());
+		System.out.println(c2.sacar(1000000));
+		//System.out.println("O saldo da conta é: " + c1.getSaldo());
 		
-		//while(true) { // verificar onde tenho que fechar essa chave
-		//System.out.println("****************************************************************************");
+		while(true) { // verificar onde tenho que fechar essa chave
+		System.out.println("****************************************************************************");
 		System.out.println("");
 		System.out.println("\t\t\t Gringotes o Banco das Bruxas");
 		System.out.println("");
@@ -93,7 +97,7 @@ public class Menu {
 		
 		sobre();
 	
-		//}
+		}
 	
 }
 

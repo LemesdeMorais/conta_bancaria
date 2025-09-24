@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import conta_bancaria.model.Conta;
+import conta_bancaria.model.ContaCorrente;
 
 public class Menu {
 
@@ -30,6 +31,21 @@ public class Menu {
 		//System.out.println("O saldo da conta é: " + c1.getSaldo());
 		System.out.println(c2.sacar(1000000));
 		//System.out.println("O saldo da conta é: " + c1.getSaldo());
+		
+		c1.depositar(5000);
+		System.out.println("O saldo da conta é: " + c1.getSaldo());
+		
+		ContaCorrente cc1 = new ContaCorrente(3, 456,1,"Thuany Silva", 1000000.00f,10000.00f);
+		cc1.visualizar();
+		
+		System.out.println(cc1.sacar(2000000.00f));
+		cc1.visualizar();
+		
+		System.out.println(cc1.sacar(2000.00f));
+		cc1.visualizar();
+		
+		cc1.depositar(5000.00f);
+		cc1.visualizar();
 		
 		while(true) { // verificar onde tenho que fechar essa chave
 		System.out.println("****************************************************************************");

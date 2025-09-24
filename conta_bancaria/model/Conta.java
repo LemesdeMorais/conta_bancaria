@@ -23,6 +23,8 @@ public class Conta {
 		this.saldo = saldo;
 	}
 	
+	public Conta() {}
+	
 	
 	public int getNumero() {
 		return numero;

@@ -3,52 +3,26 @@ package conta_bancaria;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import conta_bancaria.model.Conta;
+import conta_bancaria.controller.ContaController;
 import conta_bancaria.model.ContaCorrente;
+import conta_bancaria.model.ContaPoupanca;
+import conta_bancaria.util.Cores;
 
 public class Menu {
 
+	private static final Scanner leia = new Scanner(System.in);
+	private static final ContaController contaController = new ContaController();
+					// aqui é a classe, a proxima é o objeto		
+	
 	public static void main(String[] args) {
-		Scanner leia = new Scanner(System.in);
+		
 		
 		int op=0;
 		
-		// Instanciar objetos da classe conta
-		
-		Conta c1 = new Conta(1,123,1,"Rafaela Lemes", 500000.00f);
-		
-		Conta c2 = new Conta(2,123,2,"Lemes Rafaela", 500000.00f);
-		
-		System.out.println("O saldo da conta é: " + c1.getSaldo()); // aqui o get vai retornar o saldo
-		
-		c1.setSaldo(600000.00f); // aqui é o set, ele somente altera o valor
-		
-		c1.visualizar();
-		
-		c2.visualizar();
-		
-		System.out.println(c1.sacar(1000));
-		//System.out.println("O saldo da conta é: " + c1.getSaldo());
-		System.out.println(c2.sacar(1000000));
-		//System.out.println("O saldo da conta é: " + c1.getSaldo());
-		
-		c1.depositar(5000);
-		System.out.println("O saldo da conta é: " + c1.getSaldo());
-		
-		ContaCorrente cc1 = new ContaCorrente(3, 456,1,"Thuany Silva", 1000000.00f,10000.00f);
-		cc1.visualizar();
-		
-		System.out.println(cc1.sacar(2000000.00f));
-		cc1.visualizar();
-		
-		System.out.println(cc1.sacar(2000.00f));
-		cc1.visualizar();
-		
-		cc1.depositar(5000.00f);
-		cc1.visualizar();
+		criarContasTeste();
 		
 		while(true) { // verificar onde tenho que fechar essa chave
-		System.out.println("****************************************************************************");
+		//System.out.println("****************************************************************************");
 		System.out.println("");
 		System.out.println("\t\t\t Gringotes o Banco das Bruxas");
 		System.out.println("");
@@ -86,27 +60,37 @@ public class Menu {
 		
 		switch (op) {
 			case 1: System.out.println("Criar Conta");
+			keyPress();
 			break;
 			
 			case 2: System.out.println("Listar todas as contas");
+			listarContas();
+			
+			keyPress();
 			break;
 			
 			case 3: System.out.println("Buscar Conta por Numero");
+			keyPress();
 			break;
 			
 			case 4: System.out.println(" Atualizar Dados da Conta");
+			keyPress();
 			break;
 			
 			case 5: System.out.println("Apagar Conta");
+			keyPress();
 			break;
 			
 			case 6: System.out.println("Sacar");
+			keyPress();
 			break;
 			
 			case 7: System.out.println("Depositar");
+			keyPress();
 			break;
 			
 			case 8: System.out.println("Transferir valores entre Contas");
+			keyPress();
 			break;
 		}
 		
@@ -123,6 +107,20 @@ public class Menu {
 				+ 			"\tRafaela Lemes - Dev Full Stack\n "
 				+ 			"\tgithub.com/lemesdemorais\n"
 				+ 			"\n****************************************************************************");		
+	}
+	
+	public static void keyPress() {
+		System.out.println(Cores.TEXT_RESET + "\n\nPressiona Ender para continuar...");
+		leia.nextLine();
+		}
+	
+	private static void criarContasTeste() {
+		contaController.cadastrar(new ContaCorrente(1, 456,1,"Thuany Silva", 1000000.00f,10000.00f));
+		contaController.cadastrar(new ContaPoupanca(2,456,2,"Marcia Condarco", 1000000.00f, 10));
+	}
+	private static void listarContas() {
+		contaController.listarTodas();
+		
 	}
 }
 

@@ -91,4 +91,11 @@ public abstract class Conta {
 		System.out.printf("Saldo da conta: %.2f%n", this.saldo);
 	}
 
+	/*public void visualizar() {
+		// TODO Auto-generated method stub
+		
+	}*/
+
+	//public abstract void visualizar();
+
 }

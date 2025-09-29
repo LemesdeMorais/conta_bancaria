@@ -40,6 +40,7 @@ public class Menu {
 		System.out.println("\t\t\t 6 - Sacar");
 		System.out.println("\t\t\t 7 - Depositar");
 		System.out.println("\t\t\t 8 - Transferir valores entre Contas");
+		System.out.println("\t\t\t 9 - Procurar conta por Titular");
 		System.out.println("\t\t\t 0 - Sair");
 		System.out.println("");
 		System.out.println("****************************************************************************");
@@ -53,7 +54,7 @@ public class Menu {
 			System.out.println("\n Gringotes o Banco das Bruxas - O lugar mais seguro!");
 			leia.close();
 			System.exit(0);
-			}else if(op >= 9 ) {
+			}else if(op >= 10 ) {
 				System.out.println("\n Opção inválida! Tente novamente.");
 				}
 		}catch (InputMismatchException e) {
@@ -91,14 +92,22 @@ public class Menu {
 			break;
 			
 			case 6: System.out.println("Sacar");
+			sacar();
 			keyPress();
 			break;
 			
 			case 7: System.out.println("Depositar");
+			depositar();
 			keyPress();
 			break;
 			
 			case 8: System.out.println("Transferir valores entre Contas");
+			transferir();
+			keyPress();
+			break;
+			
+			case 9: System.out.println("Procurar Pelo Titular da Conta");
+			listarPorTitular();
 			keyPress();
 			break;
 		}
@@ -250,10 +259,59 @@ public class Menu {
 			
 		}else {
 				System.out.printf("\nA conta número %d não foi encontrada!", numero);
-			}
-			
+			}	
 		
+	}
+	
+	private static void sacar() {
+		System.out.print("Digite o número da conta: ");
+		int numero = leia.nextInt();
+		leia.nextLine();
 		
+		System.out.print("Digite o valor do saque: ");
+		float valor = leia.nextFloat();
+		leia.nextLine();
+		
+		contaController.sacar(numero, valor);
+		
+	}
+	
+	
+	private static void depositar() {
+		System.out.print("Digite o número da conta: ");
+		int numero = leia.nextInt();
+		leia.nextLine(); //isso é para evitar o bo do \n
+		
+		System.out.print("Digite o valor do deposito: ");
+		float valor = leia.nextFloat();
+		leia.nextLine();
+		
+		contaController.depositar(numero, valor);
+		
+	}	
+	
+	private static void transferir() {
+		System.out.print("Digite o número da conta de origem: ");
+		int numeroOrigem = leia.nextInt();
+		leia.nextLine();
+		
+		System.out.print("Digite o número da conta de destino: ");
+		int numeroDestino = leia.nextInt();
+		leia.nextLine();//isso é para evitar o bo do \n
+		
+		System.out.print("Digite o valor da transferência: ");
+		float valor = leia.nextFloat();
+		leia.nextLine();
+		
+		contaController.transferir(numeroOrigem, numeroDestino, valor);
+		
+	}
+	
+	private static void listarPorTitular() {
+		System.out.print("Digite o nome do titular da conta: ");
+		String titular = leia.nextLine();
+		
+		contaController.listarPorTitular(titular);
 		
 	}
 	
